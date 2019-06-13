@@ -135,7 +135,7 @@ table {
 }
 
 .table {
-  background-color: #f1f1f1;
+  background-color: #333333;
 }
 
 /* LIST GROUP ITEM */
@@ -155,4 +155,8 @@ table {
     padding: 0.75rem;
     background-color: #f1f1f1;
     border: 1px solid #0d124a11;
+}
+
+.expand {
+  transform: scale(2.5);
 }

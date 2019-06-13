@@ -1,4 +1,3 @@
-{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -6,50 +5,54 @@
 	<title>Touch Gestures Prototype</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static '/vendors/bootstrap/css/bootstrap.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
+	<link rel="stylesheet" type="text/css" href="../../static/vendors/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../static/css/main.css" />
 
-	<script src="{% static '/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-	<script src="{% static '/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
-	<script src="{% static '/vendors/hammer/hammer.min.js' %}"></script>
-	<script src="{% static '/vendors/hammer/jquery.hammer.js' %}"></script>
+	<script src="../../static/vendors/jquery/jquery-3.3.1.min.js"></script>
+	<script src="../../static/vendors/jquery-ui/jquery-ui.min.js"></script>
+	<script src="../../static/vendors/hammer/hammer.min.js"></script>
+	<script src="../../static/vendors/hammer/jquery.hammer.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 
 	<style type="text/css">
 		body {
-			margin:0;
-			padding:0;
+		  margin: 0;
+		  padding: 0;
 		}
 
 		.box-container {
-			display: flex;
-			flex-wrap: wrap;
+		  display: flex;
+		  flex-wrap: wrap;
 		}
 
 		.large-box {
-			width: 100%;
-			height: 300px;
-			background: #0d124a;
-			padding: 5px;
-			margin: 0 10px 10px 0;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		  width: 100%;
+		  height: 300px;
+		  background: #0d124a;
+		  padding: 5px;
+		  margin: 0 10px 10px 0;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
 		}
 
 		.small-box {
-			width: 100px;
-			height: 100px;
-			background: #7ce6df;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		  width: 100px;
+		  height: 100px;
+		  background: #7ce6df;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
 		}
 
 		.action-complete {
-			background: #ffffff;
+		  background: #ffffff;
+		}
+
+		.expand {
+		  transform: scale(2.5);
 		}
 	</style>
 
@@ -84,7 +87,49 @@
 		</div>
 	</div>
 	<script>
-	  // your solution here
+	  	
+		// // rotate 
+		var rotate = document.getElementById('rotate-box');
+		var Rotate = new Hammer(rotate);
+		Rotate.on('rotate', function(c) {
+		  c.target.classList.toggle('rotate');
+		});
+
+		// // pinch 
+		var pinch = document.getElementById('pinch-box');
+		var Pinch = new Hammer(pinch);
+		Pinch.on('pinch', function(h) {
+		  h.target.classList.toggle('min_expand');
+		});
+
+		//slide
+		var swipe = document.getElementById('swipe-box');
+		var SW = new Hammer(swipe);
+		SW.on("swipe", function(yn) {
+		  yn.target.classList.toggle('right');
+		});
+
+		//pan 
+		var pan = document.getElementById('pan-box');
+		var Pan = new Hammer(pan);
+		Pan.on("pan", function(en) {
+		  en.target.classList.toggle('min_expand');
+		});
+
+		// press 
+		var press = document.getElementById('press-box');
+		var mc = new Hammer(press);
+		mc.on("press", function(ev) {
+		    press.textContent = ev.type +" gesture detected.";
+		});
+
+		// tap 
+		var tap = document.getElementById('tap-box');
+		var Tap = new Hammer(tap);
+		Tap.on('tap', function(e) {
+		  e.target.classList.toggle('expand');
+		});
+
   </script>
 </body>
 </html>
