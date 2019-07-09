@@ -125,31 +125,29 @@
 		//swipe
 		var swipeBox = document.getElementById('swipe-box');
 		var SW = new Hammer(swipeBox);
-		SW.on("swipe", function(pin) {
-		  	pin.target.classList.toggle('right');
+		SW.on("swipe", function() {
+		  	swipeBox.classList.toggle('right');
 		});
 
 		//pan 
 		var panBox = document.getElementById('pan-box');
 		var Pan = new Hammer(panBox);
-		Pan.on("pan", function(pa) {
-		  	pa.target.classList.toggle('min_expand');
+		Pan.on("pan", function() {
+		  	panBox.classList.toggle('min_expand');
 		});
-
-
 
 		// press 
 		var pressBox = document.getElementById('press-box');
 		var pressMC = new Hammer(pressBox);
-		pressMC.on("press", function(pr) {
-		    pressBox.textContent = pr.type +" gesture detected.";
+		pressMC.on("press", function() {
+		    pressBox.textContent = "press gesture detected.";
 		});
 
 		// tap 
 		var tapBox = document.getElementById('tap-box');
 		var Tap = new Hammer(tapBox);
-		Tap.on('tap', function(ta) {
-		  	ta.target.classList.toggle('expand');
+		Tap.on('tap', function() {
+		  	tapBox.classList.toggle('expand');
 		});
 
   </script>
