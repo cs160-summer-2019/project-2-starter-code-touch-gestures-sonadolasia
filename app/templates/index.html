@@ -54,6 +54,25 @@
 		.expand {
 		  transform: scale(2.5);
 		}
+
+		.min_expand {
+		  transform: scale(.5);
+		}
+
+		.max_expand {
+		  transform: scale(.25);
+		  transform: rotate(80deg);
+		}
+
+		.rotate {
+		  transform: rotate(20deg);
+		}
+
+		.right {
+		  transform: scaleX(20);
+		}
+
+
 	</style>
 
 </head>
@@ -92,44 +111,45 @@
 		var Rotate = new Hammer(rotateBox);
 		Rotate.get('rotate').set({ enable: true });
 		Rotate.on('rotate', function() {
-			rot.style.transform = "rotate(90deg)"
+			rotateBox.target.classList.toggle('rotate');
 		});
 
 		// // pinch 
 		var pinchBox = document.getElementById('pinch-box');
 		var Pinch = new Hammer(pinchBox);
+		Pinch.get('pinch').set({ enable: true });
 		Pinch.on('pinch', function() {
-		  	pinchBox.style.height = "20px";
-          	pinchBox.style.width = "20px";
+		  	pinchBox.target.classList.toggle('max_expand');
 		});
 
 		//swipe
 		var swipeBox = document.getElementById('swipe-box');
 		var SW = new Hammer(swipeBox);
-		SW.on("swipe", function() {
-		  	swipeBox.target.classList.toggle('right');
+		SW.on("swipe", function(pin) {
+		  	pin.target.classList.toggle('right');
 		});
 
 		//pan 
 		var panBox = document.getElementById('pan-box');
 		var Pan = new Hammer(panBox);
-		Pan.on("pan", function() {
-		  	panBox.target.classList.toggle('min_expand');
+		Pan.on("pan", function(pa) {
+		  	pa.target.classList.toggle('min_expand');
 		});
+
 
 
 		// press 
 		var pressBox = document.getElementById('press-box');
 		var pressMC = new Hammer(pressBox);
-		pressMC.on("press", function() {
-		    pressBox.textContent = ev.type +" gesture detected.";
+		pressMC.on("press", function(pr) {
+		    pressBox.textContent = pr.type +" gesture detected.";
 		});
 
 		// tap 
 		var tapBox = document.getElementById('tap-box');
 		var Tap = new Hammer(tapBox);
-		Tap.on('tap', function() {
-		  	tapBox.target.classList.toggle('expand');
+		Tap.on('tap', function(ta) {
+		  	ta.target.classList.toggle('expand');
 		});
 
   </script>
