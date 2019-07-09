@@ -111,7 +111,7 @@
 		var Rotate = new Hammer(rotateBox);
 		Rotate.get('rotate').set({ enable: true });
 		Rotate.on('rotate', function() {
-			rotateBox.target.classList.toggle('rotate');
+			rotateBox.classList.toggle('rotate');
 		});
 
 		// // pinch 
@@ -119,7 +119,7 @@
 		var Pinch = new Hammer(pinchBox);
 		Pinch.get('pinch').set({ enable: true });
 		Pinch.on('pinch', function() {
-		  	pinchBox.target.classList.toggle('max_expand');
+		  	pinchBox.classList.toggle('max_expand');
 		});
 
 		//swipe
