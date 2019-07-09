@@ -87,47 +87,49 @@
 		</div>
 	</div>
 	<script>
-	  	
-		// // rotate 
-		var rotate = document.getElementById('rotate-box');
-		var Rotate = new Hammer(rotate);
-		Rotate.on('rotate', function(c) {
-		  c.target.classList.toggle('rotate');
+		//rotate
+		var rotateBox = document.getElementById('rotate-box');
+		var Rotate = new Hammer(rotateBox);
+		Rotate.get('rotate').set({ enable: true });
+		Rotate.on('rotate', function() {
+			rot.style.transform = "rotate(90deg)"
 		});
 
 		// // pinch 
-		var pinch = document.getElementById('pinch-box');
-		var Pinch = new Hammer(pinch);
-		Pinch.on('pinch', function(h) {
-		  h.target.classList.toggle('min_expand');
+		var pinchBox = document.getElementById('pinch-box');
+		var Pinch = new Hammer(pinchBox);
+		Pinch.on('pinch', function() {
+		  	pinchBox.style.height = "20px";
+          	pinchBox.style.width = "20px";
 		});
 
-		//slide
-		var swipe = document.getElementById('swipe-box');
-		var SW = new Hammer(swipe);
-		SW.on("swipe", function(yn) {
-		  yn.target.classList.toggle('right');
+		//swipe
+		var swipeBox = document.getElementById('swipe-box');
+		var SW = new Hammer(swipeBox);
+		SW.on("swipe", function() {
+		  	swipeBox.target.classList.toggle('right');
 		});
 
 		//pan 
-		var pan = document.getElementById('pan-box');
-		var Pan = new Hammer(pan);
-		Pan.on("pan", function(en) {
-		  en.target.classList.toggle('min_expand');
+		var panBox = document.getElementById('pan-box');
+		var Pan = new Hammer(panBox);
+		Pan.on("pan", function() {
+		  	panBox.target.classList.toggle('min_expand');
 		});
 
+
 		// press 
-		var press = document.getElementById('press-box');
-		var mc = new Hammer(press);
-		mc.on("press", function(ev) {
-		    press.textContent = ev.type +" gesture detected.";
+		var pressBox = document.getElementById('press-box');
+		var pressMC = new Hammer(pressBox);
+		pressMC.on("press", function() {
+		    pressBox.textContent = ev.type +" gesture detected.";
 		});
 
 		// tap 
-		var tap = document.getElementById('tap-box');
-		var Tap = new Hammer(tap);
-		Tap.on('tap', function(e) {
-		  e.target.classList.toggle('expand');
+		var tapBox = document.getElementById('tap-box');
+		var Tap = new Hammer(tapBox);
+		Tap.on('tap', function() {
+		  	tapBox.target.classList.toggle('expand');
 		});
 
   </script>
